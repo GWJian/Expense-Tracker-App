@@ -47,6 +47,11 @@ dependencies:
   supabase_flutter: ^2.9.1
   google_sign_in: ^7.1.1
 
+  # Firebase (minimal for hosting/distribution)
+  firebase_core: ^3.15.1
+  # firebase_app_distribution: ^0.5.1  # Optional: for beta testing
+  # firebase_analytics: ^11.3.3        # Optional: for analytics
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
