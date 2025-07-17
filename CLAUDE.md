@@ -58,6 +58,8 @@ For detailed guidelines, refer to these files:
 - **[docs/dart-guidelines.md](docs/dart-guidelines.md)** - Dart language best practices
 - **[docs/ui-guidelines.md](docs/ui-guidelines.md)** - UI development and responsive design
 - **[docs/supabase-integration.md](docs/supabase-integration.md)** - Backend integration patterns
+- **[docs/error-handling-testing.md](docs/error-handling-testing.md)** - Error handling and testing best practices
+
 
 ## Quick Reference
 
