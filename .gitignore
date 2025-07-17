@@ -72,5 +72,14 @@ app.*.map.json
 **/docs/my
 **/docs/used
 
+# Firebase
+firebase_app_id_file.json
+**/ios/Runner/GoogleService-Info.plist
+**/android/app/google-services.json
+**/lib/firebase_options.dart
+**/web/firebase-config.js
+.firebaserc
+firebase.json
+
 # MCP
 .mcp.json
