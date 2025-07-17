@@ -67,7 +67,10 @@ app.*.map.json
 /android/app/release
 
 # documentation
-**/docs
+**/docs/bin
+**/docs/idea
+**/docs/my
+**/docs/used
 
 # MCP
 .mcp.json
