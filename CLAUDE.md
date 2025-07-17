@@ -118,4 +118,15 @@ Before providing any solution, always check:
 - Widget catalog documentation
 - Package documentation on pub.dev
 
+### Context7 Library References
+- flutter_bloc: `/felangel/bloc` - State management documentation
+- go_router: `/flutter/packages/go_router` - Navigation and routing
+- supabase_flutter: `/supabase/supabase-flutter` - Backend integration
+- Firebase: `/firebase/flutterfire` - Analytics and hosting
+
+### Development Workflow Reminders
+- **Always use Context7 MCP** for up-to-date library documentation using the IDs above
+- **Always use WebSearch** for current best practices and latest techniques
+- Combine both sources for comprehensive and current guidance
+
 Remember: Understanding > Memorization, Guidelines > Rigid Rules. It's okay to look these up when needed.
