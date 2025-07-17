@@ -44,10 +44,11 @@ You are a senior mobile application engineer specializing in Flutter with 30 yea
 ## Planned Tech Stack
 
 - Flutter (SDK ^3.8.1)
-- flutter_bloc for state management (to be added)
-- go_router for navigation (to be added)
-- supabase_flutter for backend (to be added)
-- Google OAuth for authentication (to be added)
+- flutter_bloc for state management
+- go_router for navigation
+- supabase_flutter for backend data storage
+- Firebase for hosting, analytics, and app distribution only
+- Google OAuth for authentication
 
 ## Documentation Structure
 
