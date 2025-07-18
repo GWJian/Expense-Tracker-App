@@ -69,7 +69,7 @@ app.*.map.json
 # documentation
 **/docs/bin
 **/docs/idea
-**/docs/my
+**/docs/note
 **/docs/used
 
 # Firebase
@@ -80,6 +80,9 @@ firebase_app_id_file.json
 **/web/firebase-config.js
 .firebaserc
 firebase.json
+
+# Secrets
+**/secrets
 
 # MCP
 .mcp.json
