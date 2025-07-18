@@ -127,6 +127,7 @@ Before providing any solution, always check:
 ### Development Workflow Reminders
 - **Always use Context7 MCP** for up-to-date library documentation using the IDs above
 - **Always use WebSearch** for current best practices and latest techniques
+- **Don't forget to check Documentation Structure** - Always cross-reference the documentation files listed above for consistency
 - Combine both sources for comprehensive and current guidance
 
 Remember: Understanding > Memorization, Guidelines > Rigid Rules. It's okay to look these up when needed.
