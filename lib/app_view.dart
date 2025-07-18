@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/auth/onboarding_screen.dart';
+import 'screens/auth/login_screen.dart';
 
 class MyAppView extends StatelessWidget {
   const MyAppView({super.key});
@@ -15,7 +15,7 @@ class MyAppView extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      home: const OnboardingScreen(),
+      home: const LoginScreen(),
     );
   }
 }
