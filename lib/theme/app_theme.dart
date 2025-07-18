@@ -6,8 +6,7 @@ import 'app_spacing.dart';
 
 /// ============================= App Theme =============================
 /// Main theme configuration for the expense tracker app
-/// Provides comprehensive theming for both light and dark modes
-/// following Material Design 3 guidelines
+/// Provides comprehensive theming following Material Design 3 guidelines
 
 class AppTheme {
   AppTheme._();
@@ -75,68 +74,6 @@ class AppTheme {
     );
   }
 
-  /// ============================= Dark Theme =============================
-  static ThemeData get darkTheme {
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: AppColors.darkColorScheme,
-      fontFamily: 'Roboto',
-      
-      // App Bar Theme
-      appBarTheme: _darkAppBarTheme,
-      
-      // Bottom Navigation Theme
-      bottomNavigationBarTheme: _darkBottomNavigationTheme,
-      
-      // Card Theme
-      cardTheme: _cardTheme,
-      
-      // Elevated Button Theme
-      elevatedButtonTheme: _elevatedButtonTheme,
-      
-      // Outlined Button Theme
-      outlinedButtonTheme: _outlinedButtonTheme,
-      
-      // Text Button Theme
-      textButtonTheme: _textButtonTheme,
-      
-      // Input Decoration Theme
-      inputDecorationTheme: _inputDecorationTheme,
-      
-      // Floating Action Button Theme
-      floatingActionButtonTheme: _floatingActionButtonTheme,
-      
-      // Chip Theme
-      chipTheme: _chipTheme,
-      
-      // Dialog Theme
-      dialogTheme: _dialogTheme,
-      
-      // Divider Theme
-      dividerTheme: _dividerTheme,
-      
-      // List Tile Theme
-      listTileTheme: _listTileTheme,
-      
-      // Text Theme
-      textTheme: _buildTextTheme(AppColors.darkColorScheme),
-      
-      // Icon Theme
-      iconTheme: _buildIconTheme(AppColors.darkColorScheme),
-      
-      // Primary Icon Theme
-      primaryIconTheme: _buildPrimaryIconTheme(AppColors.darkColorScheme),
-      
-      // Scaffold Background Color
-      scaffoldBackgroundColor: AppColors.darkBackground,
-      
-      // Visual Density
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-      
-      // System UI Overlay Style
-      primarySwatch: _createMaterialColor(AppColors.primaryGreen),
-    );
-  }
 
   /// ============================= App Bar Themes =============================
   static AppBarTheme get _lightAppBarTheme => AppBarTheme(
@@ -154,20 +91,6 @@ class AppTheme {
     systemOverlayStyle: SystemUiOverlayStyle.dark,
   );
 
-  static AppBarTheme get _darkAppBarTheme => AppBarTheme(
-    backgroundColor: AppColors.darkBackground,
-    foregroundColor: AppColors.darkOnSurface,
-    elevation: 0,
-    centerTitle: true,
-    titleTextStyle: AppTextStyles.headlineMediumBold.copyWith(
-      color: AppColors.darkOnSurface,
-    ),
-    iconTheme: IconThemeData(
-      color: AppColors.darkOnSurface,
-      size: AppSpacing.iconMedium,
-    ),
-    systemOverlayStyle: SystemUiOverlayStyle.light,
-  );
 
   /// ============================= Bottom Navigation Themes =============================
   static BottomNavigationBarThemeData get _lightBottomNavigationTheme =>
@@ -181,16 +104,6 @@ class AppTheme {
         unselectedLabelStyle: AppTextStyles.labelSmall,
       );
 
-  static BottomNavigationBarThemeData get _darkBottomNavigationTheme =>
-      BottomNavigationBarThemeData(
-        backgroundColor: AppColors.darkSurface,
-        selectedItemColor: AppColors.primaryGreenLight,
-        unselectedItemColor: AppColors.darkOnSurfaceVariant,
-        type: BottomNavigationBarType.fixed,
-        elevation: 8,
-        selectedLabelStyle: AppTextStyles.labelSmall,
-        unselectedLabelStyle: AppTextStyles.labelSmall,
-      );
 
   /// ============================= Card Theme =============================
   static CardThemeData get _cardTheme => CardThemeData(
@@ -439,15 +352,4 @@ class AppTheme {
     return MaterialColor(color.value, swatch);
   }
 
-  /// Returns the appropriate theme based on brightness
-  static ThemeData getThemeForBrightness(Brightness brightness) {
-    return brightness == Brightness.light ? lightTheme : darkTheme;
-  }
-
-  /// Returns system UI overlay style for the given theme
-  static SystemUiOverlayStyle getSystemUiOverlayStyle(ThemeData theme) {
-    return theme.brightness == Brightness.light
-        ? SystemUiOverlayStyle.dark
-        : SystemUiOverlayStyle.light;
-  }
 }

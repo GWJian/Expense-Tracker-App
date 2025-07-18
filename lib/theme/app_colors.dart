@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 /// ============================= App Colors =============================
 /// Centralized color palette for the expense tracker app
-/// Provides consistent colors for both light and dark themes
-/// following Material Design 3 guidelines
+/// Provides consistent colors following Material Design 3 guidelines
 
 class AppColors {
   AppColors._();
@@ -52,14 +51,6 @@ class AppColors {
   static const Color lightOutline = Color(0xFF79747E);
   static const Color lightOutlineVariant = Color(0xFFCAC4D0);
 
-  /// ============================= Dark Theme Colors =============================
-  static const Color darkBackground = Color(0xFF141218);
-  static const Color darkSurface = Color(0xFF141218);
-  static const Color darkSurfaceVariant = Color(0xFF2B2930);
-  static const Color darkOnSurface = Color(0xFFE6E0E9);
-  static const Color darkOnSurfaceVariant = Color(0xFFCAC4D0);
-  static const Color darkOutline = Color(0xFF938F99);
-  static const Color darkOutlineVariant = Color(0xFF49454F);
 
   /// ============================= Light Color Scheme =============================
   static ColorScheme get lightColorScheme => ColorScheme.fromSeed(
@@ -76,20 +67,6 @@ class AppColors {
         onError: white,
       );
 
-  /// ============================= Dark Color Scheme =============================
-  static ColorScheme get darkColorScheme => ColorScheme.fromSeed(
-        seedColor: primaryGreen,
-        brightness: Brightness.dark,
-        background: darkBackground,
-        surface: darkSurface,
-        surfaceVariant: darkSurfaceVariant,
-        onSurface: darkOnSurface,
-        onSurfaceVariant: darkOnSurfaceVariant,
-        outline: darkOutline,
-        outlineVariant: darkOutlineVariant,
-        error: error,
-        onError: white,
-      );
 
   /// ============================= Expense Category Colors =============================
   static const List<Color> expenseCategoryColors = [

@@ -8,10 +8,6 @@ import 'app_colors.dart';
 class ThemeUtils {
   ThemeUtils._();
 
-  /// Check if the current theme is dark
-  static bool isDarkMode(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.dark;
-  }
 
   /// Get appropriate text color based on background
   static Color getTextColorForBackground(Color backgroundColor) {
@@ -25,20 +21,15 @@ class ThemeUtils {
     return AppColors.expenseCategoryColors[index % AppColors.expenseCategoryColors.length];
   }
 
-  /// Set system UI overlay style based on theme
+  /// Set system UI overlay style for light theme
   static void setSystemUIOverlayStyle(BuildContext context) {
-    final isDark = isDarkMode(context);
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
-        statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
-        systemNavigationBarColor: isDark 
-            ? AppColors.darkSurface 
-            : AppColors.lightSurface,
-        systemNavigationBarIconBrightness: isDark 
-            ? Brightness.light 
-            : Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+        systemNavigationBarColor: AppColors.lightSurface,
+        systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
   }

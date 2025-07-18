@@ -26,8 +26,6 @@ extension BuildContextExtensions on BuildContext {
   /// Quick access to screen height
   double get screenHeight => MediaQuery.of(this).size.height;
   
-  /// Check if device is in dark mode
-  bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
   
   /// Check if screen is mobile size
   bool get isMobile => screenWidth < 600;
