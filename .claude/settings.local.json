@@ -23,5 +23,6 @@
     "supabase",
     "context7",
     "sequential-thinking"
-  ]
+  ],
+  "includeCoAuthoredBy": false
 }
