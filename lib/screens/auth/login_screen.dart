@@ -1,4 +1,7 @@
+import 'package:expense_tracker_app/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
+import '../../theme/app_spacing.dart';
+import '../../theme/app_text_styles.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -8,86 +11,79 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(36.0),
+          padding: context.responsiveScreenEdgeInsets,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               /// ============================= Logo Section =============================
               SizedBox(
-                width: 80,
-                height: 80,
+                width: context.responsiveIconSize(baseSize: AppSpacing.iconExtraLarge) * 2,
+                height: context.responsiveIconSize(baseSize: AppSpacing.iconExtraLarge) * 2,
                 child: Image.asset(
                   'assets/images/wallet_icon.png',
-                  width: 40,
-                  height: 40,
+                  width: context.responsiveIconSize(baseSize: AppSpacing.iconExtraLarge),
+                  height: context.responsiveIconSize(baseSize: AppSpacing.iconExtraLarge),
                 ),
               ),
               
-              const SizedBox(height: 40),
+              const SizedBox(height: AppSpacing.huge),
               
               /// ============================= Welcome Text =============================
-              const Text(
+              Text(
                 'Welcome to',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black87,
-                ),
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               
-              const SizedBox(height: 8),
+              const SizedBox(height: AppSpacing.sm),
               
-              const Text(
+              Text(
                 'Expense Tracker',
-                style: TextStyle(
-                  fontSize: 32,
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               
-              const SizedBox(height: 16),
+              const SizedBox(height: AppSpacing.lg),
               
-              const Text(
+              Text(
                 'A place where you can track all your\nexpenses and incomes...',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
-                  height: 1.5,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: AppSpacing.huge),
               
               /// ============================= Auth Buttons =============================
               SizedBox(
                 width: double.infinity,
-                height: 56,
+                height: AppSpacing.buttonHeight,
                 child: OutlinedButton.icon(
                   onPressed: () {
                     // TODO: Implement Google sign-in
                   },
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Colors.black12),
+                    side: BorderSide(
+                      color: Theme.of(context).colorScheme.outline,
+                    ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(AppSpacing.buttonRadius),
                     ),
+                    padding: context.responsiveButtonEdgeInsets,
                   ),
-                  icon: const Text(
+                  icon: Text(
                     'G',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                    style: AppTextStyles.titleLargeBold.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
-                  label: const Text(
+                  label: Text(
                     'Continue with Google',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black87,
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                 ),
