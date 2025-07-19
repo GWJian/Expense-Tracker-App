@@ -1,5 +1,6 @@
 import 'package:expense_tracker_app/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
+import '../../theme/app_colors.dart';
 import '../../theme/app_spacing.dart';
 import '../../theme/app_text_styles.dart';
 
@@ -32,16 +33,16 @@ class LoginScreen extends StatelessWidget {
               /// ============================= Welcome Text =============================
               Text(
                 'Welcome to',
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: AppTextStyles.headlineMedium,
               ),
               
               const SizedBox(height: AppSpacing.sm),
               
               Text(
                 'Expense Tracker',
-                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                style: AppTextStyles.displayMedium.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: AppColors.primary,
                 ),
               ),
               
@@ -50,8 +51,8 @@ class LoginScreen extends StatelessWidget {
               Text(
                 'A place where you can track all your\nexpenses and incomes...',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                style: AppTextStyles.bodyLarge.copyWith(
+                  color: AppColors.lightOnSurfaceVariant,
                 ),
               ),
 
@@ -63,11 +64,12 @@ class LoginScreen extends StatelessWidget {
                 height: AppSpacing.buttonHeight,
                 child: OutlinedButton.icon(
                   onPressed: () {
-                    // TODO: Implement Google sign-in
+                    // Navigate to main screen (temporary for UI development)
+                    Navigator.pushReplacementNamed(context, '/main');
                   },
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(
-                      color: Theme.of(context).colorScheme.outline,
+                      color: AppColors.lightOutline,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppSpacing.buttonRadius),
@@ -77,13 +79,13 @@ class LoginScreen extends StatelessWidget {
                   icon: Text(
                     'G',
                     style: AppTextStyles.titleLargeBold.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface,
+                      color: AppColors.lightOnSurface,
                     ),
                   ),
                   label: Text(
                     'Continue with Google',
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface,
+                    style: AppTextStyles.labelLarge.copyWith(
+                      color: AppColors.lightOnSurface,
                     ),
                   ),
                 ),

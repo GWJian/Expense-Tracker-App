@@ -2,6 +2,7 @@
 /// Centralized spacing system for the expense tracker app
 /// Provides consistent spacing values throughout the application
 /// following a 4px base unit system
+library;
 
 import 'package:flutter/material.dart';
 

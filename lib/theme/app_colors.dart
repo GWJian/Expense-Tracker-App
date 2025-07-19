@@ -8,9 +8,10 @@ class AppColors {
   AppColors._();
 
   /// ============================= Primary Colors =============================
-  static const Color primaryGreen = Color(0xFF4CAF50);
-  static const Color primaryGreenLight = Color(0xFF81C784);
-  static const Color primaryGreenDark = Color(0xFF388E3C);
+  static const Color primary = Color(0xFFCF9632); // Main primary color (Orange/Yellow)
+  static const Color primaryDark = Color(0xFF111111); // Black
+  static const Color primaryMedium = Color(0xFF2F2F2F); // Dark Gray
+  static const Color primaryLight = Color(0xFFF6F6F6); // Light Gray
 
   /// ============================= Secondary Colors =============================
   static const Color secondaryBlue = Color(0xFF2196F3);
@@ -43,22 +44,21 @@ class AppColors {
   static const Color info = Color(0xFF2196F3);
 
   /// ============================= Light Theme Colors =============================
-  static const Color lightBackground = Color(0xFFFFFBFE);
-  static const Color lightSurface = Color(0xFFFFFBFE);
-  static const Color lightSurfaceVariant = Color(0xFFF3F3F3);
-  static const Color lightOnSurface = Color(0xFF1D1B20);
-  static const Color lightOnSurfaceVariant = Color(0xFF49454F);
-  static const Color lightOutline = Color(0xFF79747E);
-  static const Color lightOutlineVariant = Color(0xFFCAC4D0);
+  static const Color lightBackground = Color(0xFFF6F6F6);
+  static const Color lightSurface = Color(0xFFF6F6F6);
+  static const Color lightSurfaceVariant = Color(0xFFFFCB74);
+  static const Color lightOnSurface = Color(0xFF111111);
+  static const Color lightOnSurfaceVariant = Color(0xFF2F2F2F);
+  static const Color lightOutline = Color(0xFF2F2F2F);
+  static const Color lightOutlineVariant = Color(0xFFFFCB74);
 
 
   /// ============================= Light Color Scheme =============================
   static ColorScheme get lightColorScheme => ColorScheme.fromSeed(
-        seedColor: primaryGreen,
+        seedColor: primary,
         brightness: Brightness.light,
-        background: lightBackground,
         surface: lightSurface,
-        surfaceVariant: lightSurfaceVariant,
+        surfaceContainerHighest: lightSurfaceVariant,
         onSurface: lightOnSurface,
         onSurfaceVariant: lightOnSurfaceVariant,
         outline: lightOutline,
@@ -91,7 +91,7 @@ class AppColors {
   /// ============================= Helper Methods =============================
   /// Returns a color with adjusted opacity
   static Color withOpacity(Color color, double opacity) {
-    return color.withOpacity(opacity);
+    return color.withValues(alpha: opacity);
   }
 
   /// Returns a lighter version of the given color

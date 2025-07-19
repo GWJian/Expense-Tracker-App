@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/auth/login_screen.dart';
+import 'screens/main_screen.dart';
 import 'theme/app_theme.dart';
 
 class MyAppView extends StatelessWidget {
@@ -11,7 +12,11 @@ class MyAppView extends StatelessWidget {
       title: 'Expense Tracker',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const LoginScreen(),
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/main': (context) => const MainScreen(),
+      },
+      initialRoute: '/',
     );
   }
 }

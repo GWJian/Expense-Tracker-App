@@ -89,6 +89,11 @@ Methods should be organized in this order:
 - Check `mounted` state before `setState` in async operations
 - Use `///` for documentation comments
 - Follow Material Design 3 guidelines
+- **ALWAYS use centralized theme files from `lib/theme/`**:
+  - `AppColors` instead of `Colors.*` or `theme.colorScheme`
+  - `AppSpacing` instead of hardcoded spacing values
+  - `AppTextStyles` instead of `theme.textTheme.*`
+  - Import from `app_colors.dart`, `app_spacing.dart`, `app_text_styles.dart`
 
 ## Best Practices Summary
 

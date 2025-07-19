@@ -70,7 +70,7 @@ class AppTheme {
       visualDensity: VisualDensity.adaptivePlatformDensity,
       
       // System UI Overlay Style
-      primarySwatch: _createMaterialColor(AppColors.primaryGreen),
+      primarySwatch: _createMaterialColor(AppColors.primary),
     );
   }
 
@@ -96,7 +96,7 @@ class AppTheme {
   static BottomNavigationBarThemeData get _lightBottomNavigationTheme =>
       BottomNavigationBarThemeData(
         backgroundColor: AppColors.lightSurface,
-        selectedItemColor: AppColors.primaryGreen,
+        selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.lightOnSurfaceVariant,
         type: BottomNavigationBarType.fixed,
         elevation: 8,
@@ -175,7 +175,7 @@ class AppTheme {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSpacing.inputRadius),
           borderSide: const BorderSide(
-            color: AppColors.primaryGreen,
+            color: AppColors.primary,
             width: 2,
           ),
         ),
@@ -201,7 +201,7 @@ class AppTheme {
   /// ============================= Floating Action Button Theme =============================
   static FloatingActionButtonThemeData get _floatingActionButtonTheme =>
       FloatingActionButtonThemeData(
-        backgroundColor: AppColors.primaryGreen,
+        backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
         elevation: 6,
         shape: RoundedRectangleBorder(
@@ -212,7 +212,7 @@ class AppTheme {
   /// ============================= Chip Theme =============================
   static ChipThemeData get _chipTheme => ChipThemeData(
         backgroundColor: AppColors.grey100,
-        selectedColor: AppColors.primaryGreenLight,
+        selectedColor: AppColors.primaryLight,
         disabledColor: AppColors.grey200,
         labelStyle: AppTextStyles.labelMedium,
         padding: const EdgeInsets.symmetric(
@@ -231,8 +231,12 @@ class AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSpacing.dialogRadius),
         ),
-        contentTextStyle: AppTextStyles.bodyMedium,
-        titleTextStyle: AppTextStyles.headlineSmall,
+        contentTextStyle: AppTextStyles.bodyMedium.copyWith(
+          color: AppColors.lightOnSurface,
+        ),
+        titleTextStyle: AppTextStyles.headlineSmall.copyWith(
+          color: AppColors.lightOnSurface,
+        ),
       );
 
   /// ============================= Divider Theme =============================
@@ -335,7 +339,9 @@ class AppTheme {
   static MaterialColor _createMaterialColor(Color color) {
     final strengths = <double>[.05];
     final swatch = <int, Color>{};
-    final int r = color.red, g = color.green, b = color.blue;
+    final int r = (color.r * 255.0).round() & 0xff, 
+                  g = (color.g * 255.0).round() & 0xff, 
+                  b = (color.b * 255.0).round() & 0xff;
 
     for (int i = 1; i < 10; i++) {
       strengths.add(0.1 * i);
@@ -349,7 +355,7 @@ class AppTheme {
         1,
       );
     }
-    return MaterialColor(color.value, swatch);
+    return MaterialColor(color.toARGB32(), swatch);
   }
 
 }

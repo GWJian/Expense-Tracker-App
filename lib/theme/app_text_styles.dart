@@ -316,7 +316,7 @@ class AppTextStyles {
 
   /// Returns a text style with modified opacity
   static TextStyle withOpacity(TextStyle style, double opacity) {
-    return style.copyWith(color: style.color?.withOpacity(opacity));
+    return style.copyWith(color: style.color?.withValues(alpha: opacity));
   }
 
   /// Returns a text style with underline decoration
