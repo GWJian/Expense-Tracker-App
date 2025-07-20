@@ -16,10 +16,9 @@ You are a senior mobile application engineer specializing in Flutter with 30 yea
 
 ## Current Project Status
 
-- **Development Stage**: UI Development Phase - core navigation and theme system implemented
-- **Main Implementation**: App framework with routing, theme system, and initial screens
-- **Current Features**: Login screen, main screen with navigation, custom theme implementation
-- **Dependencies**: Flutter with state management (bloc, flutter_bloc), navigation (go_router), backend (supabase_flutter), authentication (google_sign_in), Firebase core, animations (flutter_animate), and development tools
+- **Development Stage**: Core UI and navigation framework implemented
+- **Architecture**: Clean architecture with BLoC state management
+- **Key Dependencies**: Flutter, flutter_bloc, go_router, supabase_flutter, google_sign_in
 
 ## Development Commands
 
