@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../components/navigation/custom_app_bar.dart';
 import '../widgets/balance_card.dart';
 import '../widgets/quick_actions.dart';
-import '../../../theme/app_colors.dart';
+import '../widgets/recent_transactions.dart';
 import '../../../theme/app_spacing.dart';
-import '../../../theme/app_text_styles.dart';
 
 /// ============================= Dashboard Screen =============================
 /// 
@@ -37,33 +36,8 @@ class DashboardScreen extends StatelessWidget {
               
               SizedBox(height: AppSpacing.lg),
               
-              /// Recent Transactions Section (placeholder for Step 4.2)
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(AppSpacing.md),
-                decoration: BoxDecoration(
-                  color: AppColors.lightSurfaceVariant.withValues(alpha: 0.3),
-                  borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Recent Transactions',
-                      style: AppTextStyles.titleMedium.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(height: AppSpacing.sm),
-                    Text(
-                      'Coming soon in Step 4.2',
-                      style: AppTextStyles.bodyMedium.copyWith(
-                        color: AppColors.lightOnSurfaceVariant,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              /// Recent Transactions Section (Step 4.2)
+              const RecentTransactions(),
             ],
           ),
         ),

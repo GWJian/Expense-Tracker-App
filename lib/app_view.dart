@@ -16,7 +16,7 @@ class MyAppView extends StatelessWidget {
         '/': (context) => const LoginScreen(),
         '/main': (context) => const MainScreen(),
       },
-      initialRoute: '/',
+      initialRoute: '/main',
     );
   }
 }

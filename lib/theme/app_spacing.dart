@@ -11,6 +11,7 @@ class AppSpacing {
 
   /// ============================= Base Spacing Units =============================
   /// All spacing values are based on 4px increments
+  static const double xxs = 0.5;  // Extra extra small
   static const double xs = 4.0;   // Extra small
   static const double sm = 8.0;   // Small
   static const double md = 12.0;  // Medium

@@ -6,7 +6,7 @@ import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 
 /// ============================= Main Screen =============================
-/// 
+///
 /// The main screen that contains the bottom navigation and manages
 /// the different tab screens (Home, Statistics, Wallet, Profile)
 class MainScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   /// ============================= Properties =============================
-  
+
   int _selectedIndex = 0;
 
   /// ============================= Methods =============================
@@ -27,8 +27,13 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {
       _selectedIndex = index;
     });
-    
+
     // Haptic feedback for better UX
+    HapticFeedback.lightImpact();
+  }
+
+  void _onAddPressed() {
+    // TODO: Navigate to add transaction screen
     HapticFeedback.lightImpact();
   }
 
@@ -45,13 +50,25 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _screens,
-      ),
-      bottomNavigationBar: CustomBottomNavigation(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
+      // Outer layer: Contains Scaffold for SnackBar
+      body: Builder(
+        // outerContext -> snackbar overlay on top of Scaffold
+        builder: (outerContext) {
+          return Scaffold(
+            body: IndexedStack(index: _selectedIndex, children: _screens),
+            floatingActionButton: FloatingActionButton(
+              onPressed: _onAddPressed,
+              shape:
+                  const StadiumBorder(), // To match the notch shape from BottomAppBar
+              child: const Icon(Icons.add),
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // Centered FAB
+            bottomNavigationBar: CustomBottomNavigation(
+              selectedIndex: _selectedIndex,
+              onItemTapped: _onItemTapped,
+            ),
+          );
+        },
       ),
     );
   }
@@ -64,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
       builder: (context) {
         final theme = Theme.of(context);
         final colorScheme = theme.colorScheme;
-        
+
         return Container(
           padding: EdgeInsets.all(AppSpacing.lg),
           child: Center(
