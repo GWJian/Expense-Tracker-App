@@ -71,6 +71,7 @@ app.*.map.json
 **/docs/idea
 **/docs/note
 **/docs/used
+**/docs/inuse
 
 # Firebase
 firebase_app_id_file.json
