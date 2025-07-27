@@ -3,6 +3,7 @@ import '../../../components/navigation/custom_app_bar.dart';
 import '../widgets/balance_card.dart';
 import '../widgets/recent_transactions.dart';
 import '../../../theme/app_spacing.dart';
+import '../../../theme/app_colors.dart';
 
 /// ============================= Dashboard Screen =============================
 /// 
@@ -21,17 +22,22 @@ class DashboardScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(AppSpacing.md),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// Balance Card - Prominent display of total balance
-              const BalanceCard(),
+              Padding(
+                padding: EdgeInsets.all(AppSpacing.md),
+                child: const BalanceCard(),
+              ),
               
               SizedBox(height: AppSpacing.lg),
               
               /// Recent Transactions Section (Step 4.2)
-              const RecentTransactions(),
+              Container(
+                color: AppColors.grey100,
+                child: const RecentTransactions(),
+              ),
             ],
           ),
         ),
