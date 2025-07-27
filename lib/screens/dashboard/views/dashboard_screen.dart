@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../components/navigation/custom_app_bar.dart';
 import '../widgets/balance_card.dart';
-import '../widgets/quick_actions.dart';
 import '../widgets/recent_transactions.dart';
 import '../../../theme/app_spacing.dart';
 
@@ -28,11 +27,6 @@ class DashboardScreen extends StatelessWidget {
             children: [
               /// Balance Card - Prominent display of total balance
               const BalanceCard(),
-              
-              SizedBox(height: AppSpacing.lg),
-              
-              /// Quick Actions - Add Transaction and Pay Bill buttons
-              const QuickActions(),
               
               SizedBox(height: AppSpacing.lg),
               
