@@ -1,5 +1,6 @@
 import 'package:expense_tracker_app/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_spacing.dart';
 import '../../theme/app_text_styles.dart';
@@ -65,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                 child: OutlinedButton.icon(
                   onPressed: () {
                     // Navigate to main screen (temporary for UI development)
-                    Navigator.pushReplacementNamed(context, '/main');
+                    context.go('/main');
                   },
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(

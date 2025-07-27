@@ -50,25 +50,16 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Outer layer: Contains Scaffold for SnackBar
-      body: Builder(
-        // outerContext -> snackbar overlay on top of Scaffold
-        builder: (outerContext) {
-          return Scaffold(
-            body: IndexedStack(index: _selectedIndex, children: _screens),
-            floatingActionButton: FloatingActionButton(
-              onPressed: _onAddPressed,
-              shape:
-                  const StadiumBorder(), // To match the notch shape from BottomAppBar
-              child: const Icon(Icons.add),
-            ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // Centered FAB
-            bottomNavigationBar: CustomBottomNavigation(
-              selectedIndex: _selectedIndex,
-              onItemTapped: _onItemTapped,
-            ),
-          );
-        },
+      body: IndexedStack(index: _selectedIndex, children: _screens),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _onAddPressed,
+        shape: const StadiumBorder(),
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: CustomBottomNavigation(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
       ),
     );
   }
