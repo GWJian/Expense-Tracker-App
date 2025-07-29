@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_spacing.dart';
-import '../../theme/app_text_styles.dart';
+import '../../theme/app_theme.dart';
+import '../../theme/app_styles.dart';
 
 /// ============================= Custom App Bar =============================
 /// 
@@ -32,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       scrolledUnderElevation: 0,
       backgroundColor: colorScheme.surface,
-      surfaceTintColor: AppColors.white.withValues(alpha: 0.0),
+      surfaceTintColor: AppTheme.white.withValues(alpha: 0.0),
       automaticallyImplyLeading: false,
       title: Row(
         children: [

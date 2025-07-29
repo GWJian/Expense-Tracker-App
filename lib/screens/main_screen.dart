@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dashboard/views/dashboard_screen.dart';
 import '../components/navigation/bottom_navigation.dart';
-import '../theme/app_spacing.dart';
-import '../theme/app_text_styles.dart';
+import '../theme/app_styles.dart';
 
 /// ============================= Main Screen =============================
 ///
@@ -81,7 +80,7 @@ class _MainScreenState extends State<MainScreen> {
               children: [
                 Icon(
                   Icons.construction_outlined,
-                  size: AppSpacing.iconExtraLarge,
+                  size: 48.0,
                   color: colorScheme.onSurfaceVariant,
                 ),
                 SizedBox(height: AppSpacing.md),

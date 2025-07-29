@@ -1,21 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'app_colors.dart';
-import 'app_text_styles.dart';
-import 'app_spacing.dart';
 
 /// ============================= App Theme =============================
 /// Main theme configuration for the expense tracker app
 /// Provides comprehensive theming following Material Design 3 guidelines
+/// Consolidated theme system with Material 3 ColorScheme.fromSeed() optimization
 
 class AppTheme {
   AppTheme._();
+
+  /// ============================= Primary Colors =============================
+  static const Color primarySeed = Color(0xFFCF9632); // Main primary color (Orange/Yellow)
+  static const Color primaryDark = Color(0xFF111111); // Black
+  static const Color primaryMedium = Color(0xFF2F2F2F); // Dark Gray
+  static const Color primaryLight = Color(0xFFF6F6F6); // Light Gray
+
+  /// ============================= Status Colors =============================
+  static const Color success = Color(0xFF4CAF50);
+  static const Color warning = Color(0xFFFF9800);
+  static const Color error = Color(0xFFF44336);
+  static const Color info = Color(0xFF2196F3);
+
+  /// ============================= Neutral Colors =============================
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF000000);
+
+  /// ============================= Light Theme Colors =============================
+  static const Color lightBackground = Color(0xFFF6F6F6);
+  static const Color lightSurface = Color(0xFFF6F6F6);
+  static const Color lightSurfaceVariant = Color(0xFFFFCB74);
+  static const Color lightOnSurface = Color(0xFF111111);
+  static const Color lightOnSurfaceVariant = Color(0xFF2F2F2F);
+  static const Color lightOutline = Color(0xFF2F2F2F);
+  static const Color lightOutlineVariant = Color(0xFFFFCB74);
+
+  /// ============================= Material 3 Color Scheme =============================
+  static const ColorScheme lightColorScheme = ColorScheme(
+    brightness: Brightness.light,
+    primary: primarySeed,
+    onPrimary: white,
+    secondary: Color(0xFF2196F3),
+    onSecondary: white,
+    error: error,
+    onError: white,
+    surface: lightSurface,
+    onSurface: lightOnSurface,
+    surfaceContainerHighest: lightSurfaceVariant,
+    onSurfaceVariant: lightOnSurfaceVariant,
+    outline: lightOutline,
+    outlineVariant: lightOutlineVariant,
+  );
 
   /// ============================= Light Theme =============================
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: AppColors.lightColorScheme,
+      colorScheme: lightColorScheme,
       fontFamily: 'Roboto',
       
       // App Bar Theme
@@ -42,320 +82,187 @@ class AppTheme {
       // Floating Action Button Theme
       floatingActionButtonTheme: _floatingActionButtonTheme,
       
-      // Chip Theme
-      chipTheme: _chipTheme,
-      
-      // Dialog Theme
-      dialogTheme: _dialogTheme,
-      
-      // Divider Theme
-      dividerTheme: _dividerTheme,
-      
-      // List Tile Theme
-      listTileTheme: _listTileTheme,
-      
-      // Text Theme
-      textTheme: _buildTextTheme(AppColors.lightColorScheme),
-      
-      // Icon Theme
-      iconTheme: _buildIconTheme(AppColors.lightColorScheme),
-      
-      // Primary Icon Theme
-      primaryIconTheme: _buildPrimaryIconTheme(AppColors.lightColorScheme),
-      
-      // Scaffold Background Color
-      scaffoldBackgroundColor: AppColors.lightBackground,
-      
-      // Visual Density
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-      
-      // System UI Overlay Style
-      primarySwatch: _createMaterialColor(AppColors.primary),
+      // Snack Bar Theme
+      snackBarTheme: _snackBarTheme,
     );
   }
 
+  /// ============================= Component Themes =============================
 
-  /// ============================= App Bar Themes =============================
-  static AppBarTheme get _lightAppBarTheme => AppBarTheme(
-    backgroundColor: AppColors.lightBackground,
-    foregroundColor: AppColors.lightOnSurface,
+  static const AppBarTheme _lightAppBarTheme = AppBarTheme(
+    backgroundColor: lightSurface,
+    foregroundColor: lightOnSurface,
     elevation: 0,
     centerTitle: true,
-    titleTextStyle: AppTextStyles.headlineMediumBold.copyWith(
-      color: AppColors.lightOnSurface,
+    titleTextStyle: TextStyle(
+      color: lightOnSurface,
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Roboto',
     ),
     iconTheme: IconThemeData(
-      color: AppColors.lightOnSurface,
-      size: AppSpacing.iconMedium,
+      color: lightOnSurface,
+      size: 24,
     ),
-    systemOverlayStyle: SystemUiOverlayStyle.dark,
+    actionsIconTheme: IconThemeData(
+      color: lightOnSurface,
+      size: 24,
+    ),
+    systemOverlayStyle: SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+    ),
   );
 
+  static const BottomNavigationBarThemeData _lightBottomNavigationTheme = BottomNavigationBarThemeData(
+    backgroundColor: lightSurface,
+    selectedItemColor: primarySeed,
+    unselectedItemColor: primaryMedium,
+    type: BottomNavigationBarType.fixed,
+    elevation: 8,
+    selectedLabelStyle: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Roboto',
+    ),
+    unselectedLabelStyle: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Roboto',
+    ),
+  );
 
-  /// ============================= Bottom Navigation Themes =============================
-  static BottomNavigationBarThemeData get _lightBottomNavigationTheme =>
-      BottomNavigationBarThemeData(
-        backgroundColor: AppColors.lightSurface,
-        selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.lightOnSurfaceVariant,
-        type: BottomNavigationBarType.fixed,
-        elevation: 8,
-        selectedLabelStyle: AppTextStyles.labelSmall,
-        unselectedLabelStyle: AppTextStyles.labelSmall,
-      );
-
-
-  /// ============================= Card Theme =============================
-  static CardThemeData get _cardTheme => CardThemeData(
+  static const CardThemeData _cardTheme = CardThemeData(
+    color: lightSurface,
     elevation: 2,
+    shadowColor: Color(0x1A000000),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+      borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
-    margin: const EdgeInsets.all(AppSpacing.cardMargin),
+    margin: EdgeInsets.all(12),
   );
 
-  /// ============================= Button Themes =============================
-  static ElevatedButtonThemeData get _elevatedButtonTheme =>
-      ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.buttonPadding,
-            vertical: AppSpacing.md,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSpacing.buttonRadius),
-          ),
-          textStyle: AppTextStyles.button,
-          minimumSize: const Size(120, AppSpacing.buttonHeight),
-        ),
-      );
+  static final ElevatedButtonThemeData _elevatedButtonTheme = ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: primarySeed,
+      foregroundColor: white,
+      elevation: 2,
+      shadowColor: const Color(0x1A000000),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'Roboto',
+      ),
+    ),
+  );
 
-  static OutlinedButtonThemeData get _outlinedButtonTheme =>
-      OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.buttonPadding,
-            vertical: AppSpacing.md,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSpacing.buttonRadius),
-          ),
-          textStyle: AppTextStyles.button,
-          minimumSize: const Size(120, AppSpacing.buttonHeight),
-        ),
-      );
+  static final OutlinedButtonThemeData _outlinedButtonTheme = OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      foregroundColor: primarySeed,
+      side: const BorderSide(color: primarySeed, width: 1),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'Roboto',
+      ),
+    ),
+  );
 
-  static TextButtonThemeData get _textButtonTheme => TextButtonThemeData(
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.buttonPadding,
-            vertical: AppSpacing.md,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSpacing.buttonRadius),
-          ),
-          textStyle: AppTextStyles.button,
-          minimumSize: const Size(120, AppSpacing.buttonHeight),
-        ),
-      );
+  static final TextButtonThemeData _textButtonTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: primarySeed,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'Roboto',
+      ),
+    ),
+  );
 
-  /// ============================= Input Decoration Theme =============================
-  static InputDecorationTheme get _inputDecorationTheme =>
-      InputDecorationTheme(
-        filled: true,
-        contentPadding: const EdgeInsets.all(AppSpacing.inputPadding),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.inputRadius),
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.inputRadius),
-          borderSide: BorderSide.none,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.inputRadius),
-          borderSide: const BorderSide(
-            color: AppColors.primary,
-            width: 2,
-          ),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.inputRadius),
-          borderSide: const BorderSide(
-            color: AppColors.error,
-            width: 2,
-          ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.inputRadius),
-          borderSide: const BorderSide(
-            color: AppColors.error,
-            width: 2,
-          ),
-        ),
-        labelStyle: AppTextStyles.bodyMedium,
-        hintStyle: AppTextStyles.bodyMedium,
-        errorStyle: AppTextStyles.error,
-      );
+  static const InputDecorationTheme _inputDecorationTheme = InputDecorationTheme(
+    filled: true,
+    fillColor: lightSurface,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: lightOutline, width: 1),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: lightOutline, width: 1),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: primarySeed, width: 2),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: error, width: 1),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: error, width: 2),
+    ),
+    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+    labelStyle: TextStyle(
+      color: lightOnSurfaceVariant,
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Roboto',
+    ),
+    hintStyle: TextStyle(
+      color: lightOnSurfaceVariant,
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Roboto',
+    ),
+  );
 
-  /// ============================= Floating Action Button Theme =============================
-  static FloatingActionButtonThemeData get _floatingActionButtonTheme =>
-      FloatingActionButtonThemeData(
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.white,
-        elevation: 6,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.lg),
-        ),
-      );
+  static const FloatingActionButtonThemeData _floatingActionButtonTheme = FloatingActionButtonThemeData(
+    backgroundColor: primarySeed,
+    foregroundColor: white,
+    elevation: 6,
+    shape: CircleBorder(),
+  );
 
-  /// ============================= Chip Theme =============================
-  static ChipThemeData get _chipTheme => ChipThemeData(
-        backgroundColor: AppColors.grey100,
-        selectedColor: AppColors.primaryLight,
-        disabledColor: AppColors.grey200,
-        labelStyle: AppTextStyles.labelMedium,
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.xs,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.lg),
-        ),
-      );
+  static const SnackBarThemeData _snackBarTheme = SnackBarThemeData(
+    backgroundColor: primaryDark,
+    contentTextStyle: TextStyle(
+      color: white,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Roboto',
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+    ),
+    behavior: SnackBarBehavior.floating,
+  );
 
-  /// ============================= Dialog Theme =============================
-  static DialogThemeData get _dialogTheme => DialogThemeData(
-        backgroundColor: AppColors.lightSurface,
-        elevation: 24,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.dialogRadius),
-        ),
-        contentTextStyle: AppTextStyles.bodyMedium.copyWith(
-          color: AppColors.lightOnSurface,
-        ),
-        titleTextStyle: AppTextStyles.headlineSmall.copyWith(
-          color: AppColors.lightOnSurface,
-        ),
-      );
-
-  /// ============================= Divider Theme =============================
-  static DividerThemeData get _dividerTheme => const DividerThemeData(
-        thickness: AppSpacing.dividerHeight,
-        space: AppSpacing.dividerMargin * 2,
-      );
-
-  /// ============================= List Tile Theme =============================
-  static ListTileThemeData get _listTileTheme => ListTileThemeData(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.listItemPadding,
-          vertical: AppSpacing.listItemMargin,
-        ),
-        titleTextStyle: AppTextStyles.bodyLarge,
-        subtitleTextStyle: AppTextStyles.bodyMedium,
-        leadingAndTrailingTextStyle: AppTextStyles.labelMedium,
-        dense: false,
-        visualDensity: VisualDensity.comfortable,
-      );
-
-  /// ============================= Text Theme Builder =============================
-  static TextTheme _buildTextTheme(ColorScheme colorScheme) {
-    return TextTheme(
-      // Display styles
-      displayLarge: AppTextStyles.displayLarge.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      displayMedium: AppTextStyles.displayMedium.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      displaySmall: AppTextStyles.displaySmall.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      
-      // Headline styles
-      headlineLarge: AppTextStyles.headlineLarge.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      headlineMedium: AppTextStyles.headlineMedium.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      headlineSmall: AppTextStyles.headlineSmall.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      
-      // Title styles
-      titleLarge: AppTextStyles.titleLarge.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      titleMedium: AppTextStyles.titleMedium.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      titleSmall: AppTextStyles.titleSmall.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      
-      // Body styles
-      bodyLarge: AppTextStyles.bodyLarge.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      bodyMedium: AppTextStyles.bodyMedium.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      bodySmall: AppTextStyles.bodySmall.copyWith(
-        color: colorScheme.onSurfaceVariant,
-      ),
-      
-      // Label styles
-      labelLarge: AppTextStyles.labelLarge.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      labelMedium: AppTextStyles.labelMedium.copyWith(
-        color: colorScheme.onSurfaceVariant,
-      ),
-      labelSmall: AppTextStyles.labelSmall.copyWith(
-        color: colorScheme.onSurfaceVariant,
-      ),
-    );
-  }
-
-  /// ============================= Icon Theme Builder =============================
-  static IconThemeData _buildIconTheme(ColorScheme colorScheme) {
-    return IconThemeData(
-      color: colorScheme.onSurface,
-      size: AppSpacing.iconMedium,
-    );
-  }
-
-  static IconThemeData _buildPrimaryIconTheme(ColorScheme colorScheme) {
-    return IconThemeData(
-      color: colorScheme.onPrimary,
-      size: AppSpacing.iconMedium,
-    );
-  }
-
-  /// ============================= Helper Methods =============================
+  /// ============================= System UI Configuration =============================
   
-  /// Creates a MaterialColor from a single color
-  static MaterialColor _createMaterialColor(Color color) {
-    final strengths = <double>[.05];
-    final swatch = <int, Color>{};
-    final int r = (color.r * 255.0).round() & 0xff, 
-                  g = (color.g * 255.0).round() & 0xff, 
-                  b = (color.b * 255.0).round() & 0xff;
-
-    for (int i = 1; i < 10; i++) {
-      strengths.add(0.1 * i);
-    }
-    for (final strength in strengths) {
-      final double ds = 0.5 - strength;
-      swatch[(strength * 1000).round()] = Color.fromRGBO(
-        r + ((ds < 0 ? r : (255 - r)) * ds).round(),
-        g + ((ds < 0 ? g : (255 - g)) * ds).round(),
-        b + ((ds < 0 ? b : (255 - b)) * ds).round(),
-        1,
-      );
-    }
-    return MaterialColor(color.toARGB32(), swatch);
+  /// Set system UI overlay style for light theme
+  static void setSystemUIOverlayStyle() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+        systemNavigationBarColor: lightSurface,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
   }
-
 }

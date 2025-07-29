@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../backends/models/transaction_models.dart';
-import '../../../theme/app_colors.dart';
-import '../../../theme/app_spacing.dart';
-import '../../../theme/app_text_styles.dart';
+import '../../../theme/app_theme.dart';
+import '../../../theme/app_styles.dart';
 
 /// ============================= Transaction Item =============================
 ///
@@ -29,7 +28,7 @@ class TransactionItem extends StatelessWidget {
     return Column(
       children: [
         Card(
-          color: AppColors.grey200,
+          color: const Color(0xFFEEEEEE), // grey[200] equivalent
           elevation: 2,
           margin: EdgeInsets.all(AppSpacing.sm),
           shape: RoundedRectangleBorder(
@@ -40,7 +39,7 @@ class TransactionItem extends StatelessWidget {
             child: Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(
-                horizontal: AppSpacing.screenPadding,
+                horizontal: AppSpacing.lg,
                 vertical: AppSpacing.md,
               ),
               child: Row(
@@ -83,7 +82,7 @@ class TransactionItem extends StatelessWidget {
       child: Icon(
         transaction.icon,
         color: _getIconColor(),
-        size: AppSpacing.iconSmall,
+        size: 16.0,
       ),
     );
   }
@@ -99,7 +98,7 @@ class TransactionItem extends StatelessWidget {
           transaction.title,
           style: AppTextStyles.bodyMedium.copyWith(
             fontWeight: FontWeight.w600,
-            color: AppColors.lightOnSurface,
+            color: AppTheme.lightOnSurface,
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -110,7 +109,7 @@ class TransactionItem extends StatelessWidget {
         /// Subtitle and Time
         Text(
           _buildSubtitleWithTime(),
-          style: AppTextStyles.bodySmall.copyWith(color: AppColors.grey500),
+          style: AppTextStyles.bodySmall.copyWith(color: const Color(0xFF9E9E9E)), // grey[500] equivalent
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -124,7 +123,7 @@ class TransactionItem extends StatelessWidget {
       _getFormattedAmount(),
       style: AppTextStyles.titleMedium.copyWith(
         fontWeight: FontWeight.w700,
-        color: transaction.isIncome ? AppColors.success : AppColors.error,
+        color: transaction.isIncome ? AppTheme.success : AppTheme.error,
       ),
     );
   }
@@ -133,7 +132,7 @@ class TransactionItem extends StatelessWidget {
   Widget _buildDivider() {
     return Container(
       height: 1,
-      color: AppColors.grey300,
+      color: const Color(0xFFE0E0E0), // grey[300] equivalent
     );
   }
 
@@ -156,18 +155,18 @@ class TransactionItem extends StatelessWidget {
   /// Returns the background color for the transaction icon
   Color _getIconBackgroundColor() {
     if (transaction.isIncome) {
-      return AppColors.success.withValues(alpha: 0.1);
+      return AppTheme.success.withValues(alpha: 0.1);
     } else {
-      return AppColors.error.withValues(alpha: 0.1);
+      return AppTheme.error.withValues(alpha: 0.1);
     }
   }
 
   /// Returns the color for the transaction icon
   Color _getIconColor() {
     if (transaction.isIncome) {
-      return AppColors.success;
+      return AppTheme.success;
     } else {
-      return AppColors.error;
+      return AppTheme.error;
     }
   }
 }

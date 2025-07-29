@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles.dart';
-import '../../theme/app_spacing.dart';
+import '../../theme/app_theme.dart';
+import '../../theme/app_styles.dart';
 
 /// ============================= Bottom Navigation =============================
 /// 
@@ -121,7 +120,7 @@ class CustomBottomNavigation extends StatelessWidget {
               children: [
                 Icon(
                   isSelected ? activeIcon : icon,
-                  color: isSelected ? AppColors.primary : colorScheme.onSurfaceVariant,
+                  color: isSelected ? AppTheme.primarySeed : colorScheme.onSurfaceVariant,
                   size: 20, // Smaller icon for better fit
                 ),
                 const SizedBox(height: 2), // Minimal spacing
@@ -129,7 +128,7 @@ class CustomBottomNavigation extends StatelessWidget {
                   child: Text(
                     label,
                     style: AppTextStyles.labelSmall.copyWith(
-                      color: isSelected ? AppColors.primary : colorScheme.onSurfaceVariant,
+                      color: isSelected ? AppTheme.primarySeed : colorScheme.onSurfaceVariant,
                       fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                       fontSize: 10, // Smaller text
                       height: 1.0, // Tight line height

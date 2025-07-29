@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../components/navigation/custom_app_bar.dart';
 import '../widgets/balance_card.dart';
 import '../widgets/recent_transactions.dart';
-import '../../../theme/app_spacing.dart';
-import '../../../theme/app_colors.dart';
+import '../../../theme/app_styles.dart';
 
 /// ============================= Dashboard Screen =============================
 /// 
@@ -35,7 +34,7 @@ class DashboardScreen extends StatelessWidget {
               
               /// Recent Transactions Section (Step 4.2)
               Container(
-                color: AppColors.grey100,
+                color: const Color(0xFFF5F5F5), // grey[100] equivalent
                 child: const RecentTransactions(),
               ),
             ],

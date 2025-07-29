@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_colors.dart';
-import '../../../theme/app_spacing.dart';
-import '../../../theme/app_text_styles.dart';
+import '../../../theme/app_theme.dart';
+import '../../../theme/app_styles.dart';
 
 /// ============================= Balance Card =============================
 ///
@@ -28,12 +27,12 @@ class BalanceCard extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [AppColors.primaryDark, AppColors.primaryMedium],
+          colors: [AppTheme.primaryDark, AppTheme.primaryMedium],
         ),
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        borderRadius: BorderRadius.circular(AppSpacing.md),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.3),
+            color: AppTheme.primarySeed.withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -46,7 +45,7 @@ class BalanceCard extends StatelessWidget {
           Text(
             'Total Balance',
             style: AppTextStyles.bodyMedium.copyWith(
-              color: AppColors.white.withValues(alpha: 0.9),
+              color: AppTheme.white.withValues(alpha: 0.9),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -57,7 +56,7 @@ class BalanceCard extends StatelessWidget {
           Text(
             '\$${_totalBalance.toStringAsFixed(2)}',
             style: AppTextStyles.displayLarge.copyWith(
-              color: AppColors.white,
+              color: AppTheme.white,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -73,7 +72,7 @@ class BalanceCard extends StatelessWidget {
                   'Income',
                   _monthlyIncome,
                   Icons.arrow_upward,
-                  AppColors.primary,
+                  AppTheme.primarySeed,
                 ),
               ),
 
@@ -85,7 +84,7 @@ class BalanceCard extends StatelessWidget {
                   'Expenses',
                   _monthlyExpenses,
                   Icons.arrow_downward,
-                  AppColors.primaryMedium,
+                  AppTheme.primaryMedium,
                 ),
               ),
             ],
@@ -110,13 +109,13 @@ class BalanceCard extends StatelessWidget {
         vertical: AppSpacing.xs,
       ),
       decoration: BoxDecoration(
-        color: AppColors.white.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.cardRadius),
+        color: AppTheme.white.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(AppSpacing.md),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: iconColor, size: AppSpacing.iconSmall),
+          Icon(icon, color: iconColor, size: 16.0),
 
           SizedBox(width: AppSpacing.xs),
 
@@ -127,12 +126,12 @@ class BalanceCard extends StatelessWidget {
                 Text(
                   label,
                   style: AppTextStyles.labelMedium.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.8),
+                    color: AppTheme.white.withValues(alpha: 0.8),
                   ),
                 ),
                 Text(
                   '\$${amount.toStringAsFixed(2)}',
-                  style: AppTextStyles.price.copyWith(color: AppColors.white),
+                  style: AppTextStyles.balanceAmount.copyWith(color: AppTheme.white),
                 ),
               ],
             ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../backends/models/transaction_models.dart';
-import '../../../theme/app_colors.dart';
-import '../../../theme/app_spacing.dart';
-import '../../../theme/app_text_styles.dart';
+import '../../../theme/app_theme.dart';
+import '../../../theme/app_styles.dart';
 import 'date_group_header.dart';
 import 'transaction_item.dart';
 
@@ -123,7 +122,7 @@ class _RecentTransactionsState extends State<RecentTransactions> {
   /// Builds the section header with title and View All button
   Widget _buildSectionHeader(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.screenPadding),
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -131,7 +130,7 @@ class _RecentTransactionsState extends State<RecentTransactions> {
             'Recent Transactions',
             style: AppTextStyles.titleLarge.copyWith(
               fontWeight: FontWeight.w700,
-              color: AppColors.lightOnSurface,
+              color: AppTheme.lightOnSurface,
             ),
           ),
           
@@ -156,7 +155,7 @@ class _RecentTransactionsState extends State<RecentTransactions> {
             child: Text(
               'View All',
               style: AppTextStyles.bodyMedium.copyWith(
-                color: AppColors.primary,
+                color: AppTheme.primarySeed,
                 fontWeight: FontWeight.w600,
               ),
             ),

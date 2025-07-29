@@ -1,9 +1,7 @@
-import 'package:expense_tracker_app/theme/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_spacing.dart';
-import '../../theme/app_text_styles.dart';
+import '../../theme/app_theme.dart';
+import '../../theme/app_styles.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -13,19 +11,19 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: context.responsiveScreenEdgeInsets,
+          padding: context.responsivePadding,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               /// ============================= Logo Section =============================
               SizedBox(
-                width: context.responsiveIconSize(baseSize: AppSpacing.iconExtraLarge) * 2,
-                height: context.responsiveIconSize(baseSize: AppSpacing.iconExtraLarge) * 2,
+                width: 96.0,
+                height: 96.0,
                 child: Image.asset(
                   'assets/images/wallet_icon.png',
-                  width: context.responsiveIconSize(baseSize: AppSpacing.iconExtraLarge),
-                  height: context.responsiveIconSize(baseSize: AppSpacing.iconExtraLarge),
+                  width: 48.0,
+                  height: 48.0,
                 ),
               ),
               
@@ -43,7 +41,7 @@ class LoginScreen extends StatelessWidget {
                 'Expense Tracker',
                 style: AppTextStyles.displayMedium.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: AppColors.primary,
+                  color: AppTheme.primarySeed,
                 ),
               ),
               
@@ -53,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                 'A place where you can track all your\nexpenses and incomes...',
                 textAlign: TextAlign.center,
                 style: AppTextStyles.bodyLarge.copyWith(
-                  color: AppColors.lightOnSurfaceVariant,
+                  color: AppTheme.lightOnSurfaceVariant,
                 ),
               ),
 
@@ -62,7 +60,7 @@ class LoginScreen extends StatelessWidget {
               /// ============================= Auth Buttons =============================
               SizedBox(
                 width: double.infinity,
-                height: AppSpacing.buttonHeight,
+                height: 48.0,
                 child: OutlinedButton.icon(
                   onPressed: () {
                     // Navigate to main screen (temporary for UI development)
@@ -70,23 +68,23 @@ class LoginScreen extends StatelessWidget {
                   },
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(
-                      color: AppColors.lightOutline,
+                      color: AppTheme.lightOutline,
                     ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppSpacing.buttonRadius),
+                      borderRadius: BorderRadius.circular(AppSpacing.sm),
                     ),
-                    padding: context.responsiveButtonEdgeInsets,
+                    padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                   ),
                   icon: Text(
                     'G',
-                    style: AppTextStyles.titleLargeBold.copyWith(
-                      color: AppColors.lightOnSurface,
+                    style: AppTextStyles.titleLarge.copyWith(
+                      color: AppTheme.lightOnSurface,
                     ),
                   ),
                   label: Text(
                     'Continue with Google',
                     style: AppTextStyles.labelLarge.copyWith(
-                      color: AppColors.lightOnSurface,
+                      color: AppTheme.lightOnSurface,
                     ),
                   ),
                 ),
