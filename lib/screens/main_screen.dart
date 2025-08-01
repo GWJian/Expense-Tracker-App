@@ -1,109 +1,111 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dashboard/views/dashboard_screen.dart';
-import '../components/navigation/bottom_navigation.dart';
-import '../theme/app_styles.dart';
+import 'package:go_router/go_router.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import '../theme/app_theme.dart';
 
 /// ============================= Main Screen =============================
 ///
-/// The main screen that contains the bottom navigation and manages
-/// the different tab screens (Home, Statistics, Wallet, Profile)
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+/// The main screen that integrates with go_router's StatefulShellRoute
+/// and uses PersistentTabView.router for bottom navigation with state preservation.
+class MainScreen extends StatelessWidget {
+  const MainScreen({
+    super.key,
+    required this.navigationShell,
+  });
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
   /// ============================= Properties =============================
 
-  int _selectedIndex = 0;
+  final StatefulNavigationShell navigationShell;
 
   /// ============================= Methods =============================
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
 
-    // Haptic feedback for better UX
-    HapticFeedback.lightImpact();
-  }
-
-  void _onAddPressed() {
+  void _onAddPressed(BuildContext context) {
     // TODO: Navigate to add transaction screen
+    // For now, show a placeholder dialog
     HapticFeedback.lightImpact();
+    
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Add Transaction'),
+        content: const Text('This feature will be implemented soon.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
-
-  /// List of screens for each tab
-  List<Widget> get _screens => [
-    const DashboardScreen(),
-    _buildPlaceholderScreen('Statistics'),
-    _buildPlaceholderScreen('Wallet'),
-    _buildPlaceholderScreen('Profile'),
-  ];
 
   /// ============================= Build Method =============================
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(index: _selectedIndex, children: _screens),
+    return PersistentTabView.router(
+      tabs: [
+        PersistentRouterTabConfig(
+          item: ItemConfig(
+            icon: const Icon(Icons.home_outlined),
+            title: "Home",
+            activeForegroundColor: AppTheme.primarySeed,
+            inactiveForegroundColor: AppTheme.primaryMedium,
+          ),
+        ),
+        PersistentRouterTabConfig(
+          item: ItemConfig(
+            icon: const Icon(Icons.bar_chart_outlined),
+            title: "Statistics",
+            activeForegroundColor: AppTheme.primarySeed,
+            inactiveForegroundColor: AppTheme.primaryMedium,
+          ),
+        ),
+        PersistentRouterTabConfig(
+          item: ItemConfig(
+            icon: const Icon(Icons.account_balance_wallet_outlined),
+            title: "Wallet",
+            activeForegroundColor: AppTheme.primarySeed,
+            inactiveForegroundColor: AppTheme.primaryMedium,
+          ),
+        ),
+        PersistentRouterTabConfig(
+          item: ItemConfig(
+            icon: const Icon(Icons.person_outline),
+            title: "Profile",
+            activeForegroundColor: AppTheme.primarySeed,
+            inactiveForegroundColor: AppTheme.primaryMedium,
+          ),
+        ),
+      ],
+      navBarBuilder: (navBarConfig) => Style1BottomNavBar(
+        navBarConfig: navBarConfig,
+        navBarDecoration: NavBarDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.1),
+              blurRadius: 10,
+              offset: const Offset(0, -2),
+            ),
+          ],
+        ),
+      ),
+      navigationShell: navigationShell,
       floatingActionButton: FloatingActionButton(
-        onPressed: _onAddPressed,
+        onPressed: () => _onAddPressed(context),
         shape: const StadiumBorder(),
+        backgroundColor: AppTheme.primarySeed,
+        foregroundColor: AppTheme.white,
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: CustomBottomNavigation(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
-    );
-  }
-
-  /// ============================= Helper Methods =============================
-
-  /// Creates a placeholder screen with consistent styling
-  Widget _buildPlaceholderScreen(String title) {
-    return Builder(
-      builder: (context) {
-        final theme = Theme.of(context);
-        final colorScheme = theme.colorScheme;
-
-        return Container(
-          padding: EdgeInsets.all(AppSpacing.lg),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.construction_outlined,
-                  size: 48.0,
-                  color: colorScheme.onSurfaceVariant,
-                ),
-                SizedBox(height: AppSpacing.md),
-                Text(
-                  title,
-                  style: AppTextStyles.headlineMedium.copyWith(
-                    color: colorScheme.onSurface,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(height: AppSpacing.sm),
-                Text(
-                  'This feature will be\nimplemented soon',
-                  style: AppTextStyles.bodyMedium.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 }

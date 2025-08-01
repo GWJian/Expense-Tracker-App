@@ -64,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                 child: OutlinedButton.icon(
                   onPressed: () {
                     // Navigate to main screen (temporary for UI development)
-                    context.go('/main');
+                    context.go('/home');
                   },
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(

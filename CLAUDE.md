@@ -82,7 +82,6 @@ Methods should be organized in this order:
 ```
 
 ### Essential Rules
-- Use English for all code and documentation
 - Always declare types (avoid `dynamic` and `var` when the type is known)
 - Follow clean architecture principles
 - Use immutable data where possible with `final` and `const`
