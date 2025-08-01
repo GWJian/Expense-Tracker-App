@@ -23,6 +23,8 @@ class MainScreen extends StatelessWidget {
 
   void _onAddPressed(BuildContext context) {
     // TODO: Navigate to add transaction screen
+    // Implementation note: This will require creating an add transaction screen
+    // and adding the route '/add-transaction' to app_router.dart
     // For now, show a placeholder dialog
     HapticFeedback.lightImpact();
     

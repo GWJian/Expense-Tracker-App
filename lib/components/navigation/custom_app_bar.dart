@@ -58,7 +58,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: colorScheme.onSurfaceVariant,
           ),
           onPressed: () {
-            // TODO: Navigate to notifications
+            // TODO: Navigate to notifications screen
+            // Implementation note: This will require creating a notifications screen
+            // and adding the route to app_router.dart when notifications feature is ready
           },
         ),
         SizedBox(width: AppSpacing.sm),
